@@ -1,14 +1,14 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent any  
+    agent { docker "maven" }
+
     stages {
-        stage('Build Nginx Image') { 
+        stage("maven") {
             steps {
-                 sh 'pwd'
-#                sh 'docker ps'
-#                sh 'docker build -t gcr.io/devops-302214/nginx-server:v1.1.0 .'
-               }
+                sh "mvn -version"
+                sh "java -version"
+            }
         }
-        }
+    }
 }
